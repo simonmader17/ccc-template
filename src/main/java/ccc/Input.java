@@ -32,6 +32,22 @@ public final class Input {
         return Long.parseLong(next());
     }
 
+    /** Reads a token like {@code 51P} and returns the number before the given unit, here 51. */
+    public int nextInt(String unit) {
+        return Integer.parseInt(stripUnit(next(), unit));
+    }
+
+    public long nextLong(String unit) {
+        return Long.parseLong(stripUnit(next(), unit));
+    }
+
+    private static String stripUnit(String token, String unit) {
+        if (!token.endsWith(unit)) {
+            throw new IllegalArgumentException("Expected unit '" + unit + "' but got token '" + token + "'");
+        }
+        return token.substring(0, token.length() - unit.length());
+    }
+
     public double nextDouble() {
         return Double.parseDouble(next());
     }
